@@ -1,16 +1,16 @@
-import { BaseModal } from './BaseModal'
-import { SettingsToggle } from './SettingsToggle'
+import { BaseModal } from './BaseModal';
+import { SettingsToggle } from './SettingsToggle';
 
 type Props = {
-  isOpen: boolean
-  handleClose: () => void
-  isHardMode: boolean
-  handleHardMode: Function
-  isDarkMode: boolean
-  handleDarkMode: Function
-  isHighContrastMode: boolean
-  handleHighContrastMode: Function
-}
+  isOpen: boolean;
+  handleClose: () => void;
+  isHardMode: boolean;
+  handleHardMode: Function;
+  isDarkMode: boolean;
+  handleDarkMode: Function;
+  isHighContrastMode: boolean;
+  handleHighContrastMode: Function;
+};
 
 export const SettingsModal = ({
   isOpen,
@@ -26,11 +26,6 @@ export const SettingsModal = ({
     <BaseModal title="Settings" isOpen={isOpen} handleClose={handleClose}>
       <div className="grid-cols-2 gap-4">
         <SettingsToggle
-          settingName="Hard Mode"
-          flag={isHardMode}
-          handleFlag={handleHardMode}
-        />
-        <SettingsToggle
           settingName="Dark Mode"
           flag={isDarkMode}
           handleFlag={handleDarkMode}
@@ -42,5 +37,5 @@ export const SettingsModal = ({
         />
       </div>
     </BaseModal>
-  )
-}
+  );
+};

@@ -1,75 +1,86 @@
-import { solution, unicodeSplit } from './words'
+import { solution, unicodeSplit } from './words';
 
-export type CharStatus = 'absent' | 'present' | 'correct'
+export type CharStatus = 'absent' | 'present' | 'correct';
 
 export const getStatuses = (
-  guesses: string[]
+	guesses: string[],
+	id: number
 ): { [key: string]: CharStatus } => {
-  const charObj: { [key: string]: CharStatus } = {}
-  const splitSolution = unicodeSplit(solution)
+	const charObj: { [key: string]: CharStatus } = {};
+	const splitSolution = unicodeSplit(solution[id]);
 
-  guesses.forEach((word) => {
-    unicodeSplit(word).forEach((letter, i) => {
-      if (!splitSolution.includes(letter)) {
-        // make status absent
-        return (charObj[letter] = 'absent')
-      }
+	guesses.forEach((word) => {
+		unicodeSplit(word).forEach((letter, i) => {
+			if (!splitSolution.includes(letter)) {
+				// make status absent
+				return (charObj[letter] = 'absent');
+			}
 
-      if (letter === splitSolution[i]) {
-        //make status correct
-        return (charObj[letter] = 'correct')
-      }
+			if (letter === splitSolution[i]) {
+				//make status correct
+				return (charObj[letter] = 'correct');
+			}
 
-      if (charObj[letter] !== 'correct') {
-        //make status present
-        return (charObj[letter] = 'present')
-      }
-    })
-  })
+			if (charObj[letter] !== 'correct') {
+				//make status present
+				return (charObj[letter] = 'present');
+			}
+		});
+	});
 
-  return charObj
-}
+	return charObj;
+};
 
-export const getGuessStatuses = (guess: string): CharStatus[] => {
-  const splitSolution = unicodeSplit(solution)
-  const splitGuess = unicodeSplit(guess)
+export const hasBeenGuessed = (guesses: string[], letter: string): boolean => {
+	let output = false;
+	guesses.forEach((word) => {
+		if (word.split('').includes(letter)) {
+			output = true;
+		}
+	});
+	return output;
+};
 
-  const solutionCharsTaken = splitSolution.map((_) => false)
+export const getGuessStatuses = (guess: string, id: number): CharStatus[] => {
+	const splitSolution = unicodeSplit(solution[id]);
+	const splitGuess = unicodeSplit(guess);
 
-  const statuses: CharStatus[] = Array.from(Array(guess.length))
+	const solutionCharsTaken = splitSolution.map((_) => false);
 
-  // handle all correct cases first
-  splitGuess.forEach((letter, i) => {
-    if (letter === splitSolution[i]) {
-      statuses[i] = 'correct'
-      solutionCharsTaken[i] = true
-      return
-    }
-  })
+	const statuses: CharStatus[] = Array.from(Array(guess.length));
 
-  splitGuess.forEach((letter, i) => {
-    if (statuses[i]) return
+	// handle all correct cases first
+	splitGuess.forEach((letter, i) => {
+		if (letter === splitSolution[i]) {
+			statuses[i] = 'correct';
+			solutionCharsTaken[i] = true;
+			return;
+		}
+	});
 
-    if (!splitSolution.includes(letter)) {
-      // handles the absent case
-      statuses[i] = 'absent'
-      return
-    }
+	splitGuess.forEach((letter, i) => {
+		if (statuses[i]) return;
 
-    // now we are left with "present"s
-    const indexOfPresentChar = splitSolution.findIndex(
-      (x, index) => x === letter && !solutionCharsTaken[index]
-    )
+		if (!splitSolution.includes(letter)) {
+			// handles the absent case
+			statuses[i] = 'absent';
+			return;
+		}
 
-    if (indexOfPresentChar > -1) {
-      statuses[i] = 'present'
-      solutionCharsTaken[indexOfPresentChar] = true
-      return
-    } else {
-      statuses[i] = 'absent'
-      return
-    }
-  })
+		// now we are left with "present"s
+		const indexOfPresentChar = splitSolution.findIndex(
+			(x, index) => x === letter && !solutionCharsTaken[index]
+		);
 
-  return statuses
-}
+		if (indexOfPresentChar > -1) {
+			statuses[i] = 'present';
+			solutionCharsTaken[indexOfPresentChar] = true;
+			return;
+		} else {
+			statuses[i] = 'absent';
+			return;
+		}
+	});
+
+	return statuses;
+};
