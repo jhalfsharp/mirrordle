@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mirrordle/static/css/main.ff1efa1a.css",
-    "main.js": "/mirrordle/static/js/main.54acf767.js",
+    "main.js": "/mirrordle/static/js/main.5e72974f.js",
     "static/js/787.e16266ee.chunk.js": "/mirrordle/static/js/787.e16266ee.chunk.js",
     "index.html": "/mirrordle/index.html",
     "main.ff1efa1a.css.map": "/mirrordle/static/css/main.ff1efa1a.css.map",
-    "main.54acf767.js.map": "/mirrordle/static/js/main.54acf767.js.map",
+    "main.5e72974f.js.map": "/mirrordle/static/js/main.5e72974f.js.map",
     "787.e16266ee.chunk.js.map": "/mirrordle/static/js/787.e16266ee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ff1efa1a.css",
-    "static/js/main.54acf767.js"
+    "static/js/main.5e72974f.js"
   ]
 }
