@@ -50,7 +50,7 @@ export const Keyboard = ({
 	}, [onEnter, onDelete, onChar]);
 
 	return (
-		<div className="fixed bottom-0 left-0 right-0 justify-center dark:bg-slate-900 py-4">
+		<div className="fixed bottom-0 left-0 right-0 justify-center bg-white dark:bg-slate-900 py-4">
 			<div className="flex justify-center mb-1">
 				{['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map(
 					(key) => (
