@@ -2,10 +2,7 @@ import { ReactNode } from 'react';
 import classnames from 'classnames';
 import { CharStatus } from '../../lib/statuses';
 import { MAX_WORD_LENGTH, REVEAL_TIME_MS } from '../../constants/settings';
-import {
-	getStoredIsDarkMode,
-	getStoredIsHighContrastMode,
-} from '../../lib/localStorage';
+import { getStoredIsHighContrastMode } from '../../lib/localStorage';
 
 type Props = {
 	children?: ReactNode;
@@ -28,7 +25,6 @@ export const Key = ({
 }: Props) => {
 	const keyDelayMs = REVEAL_TIME_MS * MAX_WORD_LENGTH;
 	const isHighContrast = getStoredIsHighContrastMode();
-	const isDark = getStoredIsDarkMode();
 
 	const classes = classnames(
 		'group relative grid place-items-center h-screen justify-center rounded mx-0.5 font-bold cursor-pointer select-none dark:text-white',

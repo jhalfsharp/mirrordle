@@ -25,13 +25,7 @@ import {
 	GAME_LOST_INFO_DELAY,
 	WELCOME_INFO_MODAL_MS,
 } from './constants/settings';
-import {
-	isWordInWordList,
-	isWinningWord,
-	solution,
-	findFirstUnusedReveal,
-	unicodeLength,
-} from './lib/words';
+import { isWordInWordList, solution, unicodeLength } from './lib/words';
 import { addStatsForCompletedGame, loadStats } from './lib/stats';
 import {
 	loadGameStateFromLocalStorage,
