@@ -23,8 +23,14 @@ export const shareStatus = (
 
 export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
 	const guessesNeeded = [0, 1, 2, 3].map((i: number) => {
-		return guesses.indexOf(
-			i % 2 === 0 ? solution[i] : solution[i].split('').reverse().join('')
+		return (
+			(guesses.indexOf(
+				i % 2 === 0
+					? solution[i]
+					: solution[i].split('').reverse().join('')
+			) +
+				20) %
+			20
 		);
 	});
 	return (
