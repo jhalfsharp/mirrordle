@@ -7,7 +7,10 @@ export const getStatuses = (
 	id: number
 ): { [key: string]: CharStatus } => {
 	const charObj: { [key: string]: CharStatus } = {};
-	const splitSolution = unicodeSplit(solution[id]);
+	const splitSolution =
+		id % 2 === 0
+			? unicodeSplit(solution[id])
+			: unicodeSplit(solution[id]).reverse();
 
 	guesses.forEach((word) => {
 		unicodeSplit(word).forEach((letter, i) => {
@@ -45,7 +48,7 @@ export const getGuessStatuses = (guess: string, id: number): CharStatus[] => {
 	const splitSolution = unicodeSplit(solution[id]);
 	const splitGuess = unicodeSplit(guess);
 
-	const solutionCharsTaken = splitSolution.map((_) => false);
+	const solutionCharsTaken = splitSolution.map((_: any) => false);
 
 	const statuses: CharStatus[] = Array.from(Array(guess.length));
 
@@ -69,7 +72,8 @@ export const getGuessStatuses = (guess: string, id: number): CharStatus[] => {
 
 		// now we are left with "present"s
 		const indexOfPresentChar = splitSolution.findIndex(
-			(x, index) => x === letter && !solutionCharsTaken[index]
+			(x: string, index: number) =>
+				x === letter && !solutionCharsTaken[index]
 		);
 
 		if (indexOfPresentChar > -1) {
