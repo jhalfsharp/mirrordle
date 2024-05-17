@@ -123,7 +123,7 @@ export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
 			})
 			.filter((str) => str !== '')
 			.join('\n') +
-		'\n\nhttps://jimbot6000.github.io/mirrordle/'
+		'\n\nhttps://jhalfsharp.github.io/mirrordle/'
 	);
 };
 

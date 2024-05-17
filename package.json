@@ -2,7 +2,7 @@
 	"name": "mirrordle",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://jimbot6000.github.io/mirrordle/",
+	"homepage": "https://jhalfsharp.github.io/mirrordle/",
 	"dependencies": {
 		"@headlessui/react": "^1.4.2",
 		"@heroicons/react": "^1.0.5",
